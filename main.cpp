@@ -1,6 +1,12 @@
 #include <stdio.h>
+#include "src/Battle.h"
 
 int main() {
-        puts("hello, world!");
-            return 0;
+    BattleSystem::Battle* battle = new BattleSystem::Battle();
+
+    battle->Execute();
+
+    delete battle;
+
+    return 0;
 }
