@@ -1,4 +1,4 @@
-CC     := gcc
+CC     := g++
 CFLAGS := -g -Wall -Wextra
 
 SRCS :=
@@ -6,7 +6,7 @@ REL  := src/
 
 include ${REL}Makefile
 
-SRCS+=main.c
+SRCS+=main.cpp
 
 OBJS   = $(SRCS:.cpp=.o)
 
