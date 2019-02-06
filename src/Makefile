@@ -1,3 +1,3 @@
 SRCS+=\
-	$(REL)*.cpp\
+	$(wildcard $(REL)*.cpp)\
 
