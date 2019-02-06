@@ -18,3 +18,4 @@ namespace BattleSystem{
         std::cout << test << std::endl;
     }
 }
+
