@@ -17,6 +17,11 @@ namespace BattleSystem{
         protected:
             Character* acter;
             Character* target;
+
+            double baseDamage;
+
+            void CalculateBaseDamage();
+            int  DisperseDamage();
     };
 }
 

@@ -15,6 +15,7 @@ namespace BattleSystem{
 
             void Initialize(int characterId, std::string name, int mhp, int attack);
             std::string GetName();
+            int GetAttack();
 
         protected:
             int characterId;

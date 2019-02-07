@@ -4,6 +4,7 @@
 #include "Character.h"
 
 #include <iostream>
+#include <time.h>
 
 namespace BattleSystem{
 
@@ -15,6 +16,10 @@ namespace BattleSystem{
     void Battle::Execute() {
         Character* friend_0 = new Character("味方A");
         Character* enemy_0  = new Character("敵A");
+
+        // 実行のたびに異なる乱数パターンになるように指定
+        unsigned int    now = (unsigned int)time( 0 );
+        srand(now);
 
         std::string text = "";
 

@@ -18,10 +18,28 @@ namespace BattleSystem{
     *      戦闘行動の実行
     *****************************************************/
     std::string Action::Execute() {
-        return "　" + acter->GetName() + "の行動！\n";
+        std::string action = "　" + acter->GetName() + "の行動！\n";
 
+        CalculateBaseDamage();
+
+        int damage = DisperseDamage();
+        action += "　　" + target->GetName() + "に" + std::to_string(damage) + "のダメージ！\n";
+
+        return action;
     }
 
+    /***************************************************
+    *      ダメージ計算
+    *****************************************************/
+    void Action::CalculateBaseDamage() {
+        this->baseDamage = acter->GetAttack();
+    }
 
+    /***************************************************
+    *      ダメージ分散
+    *****************************************************/
+    int Action::DisperseDamage() {
+        return this->baseDamage + (int)( rand() * ( (this->baseDamage / 5) +1.0) / (1.0 + RAND_MAX)) - (this->baseDamage / 10);
+    }
 }
 

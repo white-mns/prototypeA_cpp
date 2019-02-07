@@ -28,8 +28,15 @@ namespace BattleSystem{
         this->attack      = attack;
     }
 
+    /***************************************************
+    *      キャラクターデータの取得
+    *****************************************************/
     std::string Character::GetName() {
         return this->name;
+    }
+
+    int Character::GetAttack() {
+        return this->attack;
     }
 }
 
