@@ -1,5 +1,8 @@
 #include "Battle.h"
+
+#include "Action.h"
 #include "Character.h"
+
 #include <iostream>
 
 namespace BattleSystem{
@@ -13,15 +16,33 @@ namespace BattleSystem{
         Character* friend_0 = new Character("味方A");
         Character* enemy_0  = new Character("敵A");
 
-        std::string test = "";
+        std::string text = "";
 
-        test += "味方PT | " + friend_0->GetName() + "\n";
-        test += "敵PT | " + enemy_0->GetName()  + "\n";
+        text += "味方PT | " + friend_0->GetName() + "\n";
+        text += "敵PT | " + enemy_0->GetName()  + "\n";
 
-        test += "戦闘開始！\n";
-        test += "戦闘終了！\n";
+        text += "戦闘開始！\n";
 
-        std::cout << test << std::endl;
+        for (int i=1;i<=10;i++){
+            { // 味方の行動
+                Action* act = new Action(friend_0, enemy_0);
+
+                text += act->Execute();
+
+                delete act;
+            }
+            { // 敵の行動
+                Action* act = new Action(enemy_0, friend_0);
+
+                text += act->Execute();
+
+                delete act;
+            }
+        }
+
+        text += "戦闘終了！\n";
+
+        std::cout << text << std::endl;
     }
 }
 
