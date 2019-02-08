@@ -20,7 +20,11 @@ namespace BattleSystem{
     *      戦闘行動の実行
     *****************************************************/
     std::string Turn::Execute() {
-        std::string result = "　" + std::to_string(this->turn) + "ターン目！\n";
+        std::string result = "--------------------\n";
+        result += "　" + std::to_string(this->turn) + "ターン目！\n";
+        result += "　味方PT | " + character_0->GetName() + "　" + std::to_string(character_0->GetHp()) + "/" + std::to_string(character_0->GetMhp()) + "\n";
+        result += "　敵PT | "   + character_1->GetName() + "　" + std::to_string(character_1->GetHp()) + "/" + std::to_string(character_1->GetMhp())  + "\n";
+
         { // 味方の行動
             Action* act = new Action(this->character_0, this->character_1);
 

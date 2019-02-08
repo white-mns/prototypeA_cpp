@@ -38,5 +38,13 @@ namespace BattleSystem{
     int Character::GetAttack() {
         return this->attack;
     }
+
+    int Character::GetMhp() {
+        return this->mhp;
+    }
+
+    int Character::GetHp() {
+        return this->hp;
+    }
 }
 
