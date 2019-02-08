@@ -8,7 +8,7 @@
 namespace BattleSystem{
 
     Action::Action(Character* acter, Character* target) {
-        this->acter = acter;
+        this->acter  = acter;
         this->target = target;
     }
     Action::~Action(void) {
@@ -18,18 +18,18 @@ namespace BattleSystem{
     *      戦闘行動の実行
     *****************************************************/
     std::string Action::Execute() {
-        std::string action = "　" + acter->GetName() + "の行動！\n";
+        std::string result = "　　" + acter->GetName() + "の行動！\n";
 
         CalculateBaseDamage();
 
         int damage = DisperseDamage();
-        action += "　　" + target->GetName() + "に" + std::to_string(damage) + "のダメージ！\n";
+        result += "　　　" + target->GetName() + "に" + std::to_string(damage) + "のダメージ！\n";
 
-        return action;
+        return result;
     }
 
     /***************************************************
-    *      ダメージ計算
+    *      基礎ダメージ計算
     *****************************************************/
     void Action::CalculateBaseDamage() {
         this->baseDamage = acter->GetAttack();

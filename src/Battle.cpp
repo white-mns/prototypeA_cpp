@@ -1,7 +1,7 @@
 #include "Battle.h"
 
-#include "Action.h"
 #include "Character.h"
+#include "Turn.h"
 
 #include <iostream>
 #include <time.h>
@@ -21,33 +21,25 @@ namespace BattleSystem{
         unsigned int    now = (unsigned int)time( 0 );
         srand(now);
 
-        std::string text = "";
+        std::string result = "";
 
-        text += "味方PT | " + friend_0->GetName() + "\n";
-        text += "敵PT | " + enemy_0->GetName()  + "\n";
+        result += "味方PT | " + friend_0->GetName() + "\n";
+        result += "敵PT | " + enemy_0->GetName()  + "\n";
+        result += "\n";
 
-        text += "戦闘開始！\n";
+        result += "戦闘開始！\n";
 
         for (int i=1;i<=10;i++){
-            { // 味方の行動
-                Action* act = new Action(friend_0, enemy_0);
+            Turn* turn = new Turn(i, friend_0,enemy_0);
 
-                text += act->Execute();
+            result += turn->Execute();
 
-                delete act;
-            }
-            { // 敵の行動
-                Action* act = new Action(enemy_0, friend_0);
-
-                text += act->Execute();
-
-                delete act;
-            }
+            delete turn;
         }
 
-        text += "戦闘終了！\n";
+        result += "戦闘終了！\n";
 
-        std::cout << text << std::endl;
+        std::cout << result << std::endl;
     }
 }
 
