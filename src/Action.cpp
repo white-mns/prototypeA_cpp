@@ -25,6 +25,12 @@ namespace BattleSystem{
         int damage = DisperseDamage();
         result += "　　　" + target->GetName() + "に" + std::to_string(damage) + "のダメージ！\n";
 
+        target->ChangeHp(damage);
+
+        if (target->CheckDefeated()) {
+            result += "　　　　" + target->GetName() + "は倒れた！\n";
+        }
+
         return result;
     }
 

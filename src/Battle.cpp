@@ -29,12 +29,16 @@ namespace BattleSystem{
 
         result += "戦闘開始！\n";
 
-        for (int i=1;i<=10;i++){
-            Turn* turn = new Turn(i, character_0,character_1);
+        for (int i=1;i<=50;i++){
+            Turn* turn = new Turn(i, character_0, character_1);
 
             result += turn->Execute();
 
             delete turn;
+
+            if (character_0->CheckDefeated() || character_1->CheckDefeated()) {
+                break;
+            }
         }
 
         result += "戦闘終了！\n";

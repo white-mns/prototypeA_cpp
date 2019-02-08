@@ -33,6 +33,10 @@ namespace BattleSystem{
             delete act;
         }
 
+        if (character_1->CheckDefeated()) {
+            return result;
+        }
+
         { // 敵の行動
             Action* act = new Action(this->character_1, this->character_0);
 

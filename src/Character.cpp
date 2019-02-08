@@ -46,5 +46,23 @@ namespace BattleSystem{
     int Character::GetHp() {
         return this->hp;
     }
+
+    /***************************************************
+    *      HP変動処理
+    *****************************************************/
+    void Character::ChangeHp(int value) {
+        this->hp -= value;
+    }
+
+    /***************************************************
+    *      戦闘不能状態の確認
+    *****************************************************/
+    bool Character::CheckDefeated() {
+        if (this->hp < 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 
