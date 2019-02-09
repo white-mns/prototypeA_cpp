@@ -14,5 +14,6 @@ main: ${OBJS}
 
 clean:
 	$(RM) *.o
+	$(RM) src/*.o
 	$(RM) main
 
