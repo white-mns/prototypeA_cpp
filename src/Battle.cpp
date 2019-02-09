@@ -31,7 +31,7 @@ namespace BattleSystem{
 
     /***************************************************
     *      戦闘開始処理
-    *****************************************************/
+    ***************************************************/
     std::string Battle::BattleStart(Character* character_0, Character* character_1) {
         std::string result = "";
 
@@ -48,7 +48,7 @@ namespace BattleSystem{
 
     /***************************************************
     *      戦闘メイン処理
-    *****************************************************/
+    ***************************************************/
     std::string Battle::BattleMain(Character* character_0, Character* character_1) {
         std::string result = "";
 
