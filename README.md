@@ -12,7 +12,7 @@ OS : CentOS release 6.5 (Final)
 gcc : 7.3.1  
 
 ## 必要なもの
-bashが使えるLinux環境。  
+makeが使える環境。  
 gccが使える環境。  
 
 ## 使い方
