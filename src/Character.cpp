@@ -60,6 +60,7 @@ namespace BattleSystem{
     bool Character::CheckDefeated() {
         if (this->hp < 0) {
             return true;
+
         } else {
             return false;
         }
