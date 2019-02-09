@@ -16,6 +16,7 @@ namespace BattleSystem{
 
         protected:
             std::string BattleStart(Character* character_0, Character* character_1);
+            std::string BattleMain(Character* character_0, Character* character_1);
             bool CheckBattleContinue(Character* character_0, Character* character_1);
             std::string DisplayWinner(Character* character_0, Character* character_1);
             std::string BattleEnd();
