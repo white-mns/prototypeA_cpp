@@ -1,5 +1,5 @@
 CC     := g++
-CFLAGS := -g -Wall -Wextra
+CFLAGS := -g -O3 -Wall -Wextra
 
 SRCS :=
 REL  := src/
@@ -8,7 +8,7 @@ include ${REL}Makefile
 
 SRCS+=main.cpp
 
-OBJS   = $(SRCS:.cpp=.o)
+OBJS = $(SRCS:.cpp=.o)
 
 main: ${OBJS}
 
