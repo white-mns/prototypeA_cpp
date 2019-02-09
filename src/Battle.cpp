@@ -61,7 +61,7 @@ namespace BattleSystem{
  
     /***************************************************
     *      戦闘継続判定
-    *****************************************************/
+    ***************************************************/
     bool Battle::CheckBattleContinue(Character* character_0, Character* character_1) {
         if (character_0->CheckDefeated() || character_1->CheckDefeated()) {
             return false;
@@ -73,7 +73,7 @@ namespace BattleSystem{
 
     /***************************************************
     *      勝利PT表示
-    *****************************************************/
+    ***************************************************/
     std::string Battle::DisplayWinner(Character* character_0, Character* character_1) {
         if (character_0->CheckDefeated()) {
             return "　" + character_1->GetName() + "の勝利！\n";
@@ -86,7 +86,7 @@ namespace BattleSystem{
 
     /***************************************************
     *      戦闘終了処理
-    *****************************************************/
+    ***************************************************/
     std::string Battle::BattleEnd(Character* character_0, Character* character_1) {
         std::string result = "";
 
