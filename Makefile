@@ -1,5 +1,5 @@
-CC     := g++
-CFLAGS := -g -O3 -Wall -Wextra
+CC       := g++
+CPPFLAGS := -g -O3 -Wall -Wextra
 
 SRCS :=
 REL  := src/
