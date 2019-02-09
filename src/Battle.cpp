@@ -1,10 +1,10 @@
 #include "Battle.h"
 
-#include "Character.h"
-#include "Turn.h"
-
 #include <iostream>
 #include <time.h>
+
+#include "Character.h"
+#include "Turn.h"
 
 namespace BattleSystem{
 
@@ -17,33 +17,82 @@ namespace BattleSystem{
         Character* character_0 = new Character("味方A");
         Character* character_1 = new Character("敵A");
 
-        // 実行のたびに異なる乱数パターンになるように指定
-        unsigned int    now = (unsigned int)time( 0 );
-        srand(now);
-
         std::string result = "";
 
-        result += "味方PT | " + character_0->GetName() + "　" + std::to_string(character_0->GetHp()) + "/" + std::to_string(character_0->GetMhp()) + "\n";
-        result += "敵PT | "   + character_1->GetName() + "　" + std::to_string(character_1->GetHp()) + "/" + std::to_string(character_1->GetMhp()) + "\n";
-        result += "\n";
+        // 実行のたびに異なる乱数パターンになるように指定
+        unsigned int now = (unsigned int)time( 0 );
+        srand(now);
 
-        result += "戦闘開始！\n";
+        result += BattleStart(character_0, character_1);
 
-        for (int i=1;i<=50;i++){
+        // 戦闘処理
+        for (int i=1;i<=50;i++){ 
             Turn* turn = new Turn(i, character_0, character_1);
 
             result += turn->Execute();
 
             delete turn;
 
-            if (character_0->CheckDefeated() || character_1->CheckDefeated()) {
+            if (!CheckBattleContinue(character_0, character_1)) {
+                result += "--------------------\n";
+                result += DisplayWinner(character_0, character_1);
                 break;
             }
         }
 
-        result += "戦闘終了！\n";
+        result += BattleEnd(character_0, character_1);
 
         std::cout << result << std::endl;
+    }
+
+    /***************************************************
+    *      戦闘開始処理
+    *****************************************************/
+    std::string Battle::BattleStart(Character* character_0, Character* character_1) {
+        std::string result = "";
+
+        result += "味方PT | " + character_0->GetName() + "　" + std::to_string(character_0->GetHp()) + "/" + std::to_string(character_0->GetMhp()) + "\n";
+        result += "敵PT | "   + character_1->GetName() + "　" + std::to_string(character_1->GetHp()) + "/" + std::to_string(character_1->GetMhp()) + "\n";
+        result += "\n";
+        result += "戦闘開始！\n";
+
+        return result;
+    }
+ 
+    /***************************************************
+    *      戦闘継続判定
+    *****************************************************/
+    bool Battle::CheckBattleContinue(Character* character_0, Character* character_1) {
+        if (character_0->CheckDefeated() || character_1->CheckDefeated()) {
+            return false;
+
+        } else {
+            return true;
+        }
+    }
+
+    /***************************************************
+    *      勝利PT表示
+    *****************************************************/
+    std::string Battle::DisplayWinner(Character* character_0, Character* character_1) {
+        if (character_0->CheckDefeated()) {
+            return "　" + character_1->GetName() + "の勝利！\n";
+        }
+
+        if (character_1->CheckDefeated()) {
+            return "　" + character_0->GetName() + "の勝利！\n";
+        }
+    }
+
+    /***************************************************
+    *      戦闘終了処理
+    *****************************************************/
+    std::string Battle::BattleEnd(Character* character_0, Character* character_1) {
+        std::string result = "";
+
+        result += "戦闘終了！\n";
+
+        return result;
     }
 }
 
