@@ -40,7 +40,7 @@ namespace BattleSystem{
             }
         }
 
-        result += BattleEnd(character_0, character_1);
+        result += BattleEnd();
 
         std::cout << result << std::endl;
     }
@@ -82,12 +82,13 @@ namespace BattleSystem{
         if (character_1->CheckDefeated()) {
             return "　" + character_0->GetName() + "の勝利！\n";
         }
+        return "";
     }
 
     /***************************************************
     *      戦闘終了処理
     ***************************************************/
-    std::string Battle::BattleEnd(Character* character_0, Character* character_1) {
+    std::string Battle::BattleEnd() {
         std::string result = "";
 
         result += "戦闘終了！\n";
